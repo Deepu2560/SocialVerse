@@ -37,7 +37,7 @@ app.use("/analytics", AnalyticController);
 app.use("/posts", PostController);
 
 // app.listen to start server on port. Here port is hidden for better security.
-app.listen(process.env.PORT || 8080, async (req, res) => {
+app.listen(process.env.PORT || 3000, async (req, res) => {
   try {
     await connect();
     console.log(`===>>> Server status: started on port ${process.env.PORT}`);
