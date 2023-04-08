@@ -19,14 +19,14 @@ module.exports = async (req, res, next) => {
   if (!req.headers.authorization)
     return res
       .status(400)
-      .send({ error: true, message: "1. Token not provided or Invalid" });
+      .send({ error: true, message: "Token not provided or Invalid" });
 
   const receivedToken = req.headers.authorization.split(" ");
 
   if (receivedToken[0] != "Bearer")
     return res
       .status(400)
-      .send({ error: true, message: "2. Token not provided or Invalid" });
+      .send({ error: true, message: "Token not provided or Invalid" });
 
   const token = receivedToken[1];
 
@@ -35,15 +35,15 @@ module.exports = async (req, res, next) => {
   try {
     user = await verifyToken(token);
   } catch (error) {
-    console.log("9. Athenticaiton Error:", error);
+    console.log("Athenticaiton Error:", error);
     return res.send(400).send({
       error: true,
-      message: `3. Athenticaiton Error: ${error.message}`,
+      message: `Athenticaiton Error: ${error.message}`,
     });
   }
 
   if (!user.user) {
-    return res.status(404).send({ error: true, message: "4. User not found" });
+    return res.status(404).send({ error: true, message: "User not found" });
   }
 
   req.user = user.user;
