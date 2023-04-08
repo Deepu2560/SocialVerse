@@ -20,6 +20,17 @@ const UserController = require("./src/Controllers/UserController");
 const PostController = require("./src/Controllers/PostController");
 const AnalyticController = require("./src/Controllers/AnalyticsController");
 
+// sending for main route
+app.get("/", async (req, res) => {
+  try {
+    console.log("request for main page");
+    res.status(200).send("Hello world");
+  } catch (error) {
+    console.log("=>> main page error:", error.message);
+    res.status(400).status({ error: true, message: "Bad request" });
+  }
+});
+
 // all routes and controller methods
 app.use("/users", UserController);
 app.use("/analytics", AnalyticController);
