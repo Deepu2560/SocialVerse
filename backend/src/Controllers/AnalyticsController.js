@@ -70,7 +70,7 @@ router.get("/users/top-active", async (req, res) => {
 });
 
 // Retrieve the total number of posts
-router.get("/analytics/posts", async (req, res) => {
+router.get("/posts", async (req, res) => {
   try {
     const totalPosts = await PostModel.countDocuments();
 
@@ -91,7 +91,7 @@ router.get("/analytics/posts", async (req, res) => {
 });
 
 // Retrieve the top 5 most liked posts
-router.get("/analytics/posts/top-liked", async (req, res) => {
+router.get("/posts/top-liked", async (req, res) => {
   try {
     const topLikedPosts = await PostModel.find().sort({ likes: -1 }).limit(5);
 
