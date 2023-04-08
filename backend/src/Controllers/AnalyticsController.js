@@ -5,6 +5,7 @@ const router = express.Router();
 
 // importing user model
 const UserModel = require("../Models/User.model");
+const PostModel = require("../Models/Posts.model");
 
 // Retrieve the total number of users
 router.get("/users", async (req, res) => {
