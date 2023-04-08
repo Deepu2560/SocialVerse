@@ -11,7 +11,7 @@ const newToken = (user) => {
   return jwt.sign({ user }, `${process.env.JWT_KEY}`);
 };
 
-// register function for /auth/register route and registering new user to database
+// register function for registering new user to database.
 const registerUser = async (req, res) => {
   try {
     let user = await UserModel.findOne({ email: req.body.email });
@@ -43,7 +43,7 @@ const registerUser = async (req, res) => {
   }
 };
 
-// login function for /auth/login route and checking user credential for login
+// login function for checking user credential for login.
 const loginUser = async (req, res) => {
   try {
     const user = await UserModel.findOne({ email: req.body.email });
@@ -89,9 +89,40 @@ const loginUser = async (req, res) => {
   }
 };
 
+// getData function for getting data of user with use of id
+const getData = async (req, res) => {
+  try {
+    const user = await UserModel.findById(req.params.id);
+
+    if (!user)
+      return res.status(404).send({
+        error: true,
+        message: "User not found.",
+      });
+
+    console.log(`==> ${req.params.id} data send successfully`);
+
+    res.status(200).send({
+      error: false,
+      data: user,
+      message: "User data sent successfully",
+    });
+  } catch (error) {
+    console.log(
+      "=>> Server error while sending user data of perticular. ERROR:",
+      error.message,
+    );
+    return res.status(400).send({
+      error: true,
+      message: `Bad request. Try Again`,
+    });
+  }
+};
+
+// updateUser function for updating user data this only update name and bio of user.
 const updateUser = async (req, res) => {
   try {
-    const user = await UserModel.findOne(req.params.id);
+    const user = await UserModel.findById(req.params.id);
 
     if (!user)
       return res.status(404).send({
@@ -125,17 +156,10 @@ const updateUser = async (req, res) => {
   }
 };
 
+// deleteUser function for deleting user data.
 const deleteUser = async (req, res) => {
   try {
-    const user = await UserModel.findOne(req.params.id);
-
-    if (!user)
-      return res.status(404).send({
-        error: true,
-        message: "User not found. Please login again.",
-      });
-
-    user = await UserModel.findByIdAndDelete(req.params.id);
+    userDelete = await UserModel.findByIdAndDelete(req.params.id);
 
     console.log(`==> ${req.params.id} deleted successfully`);
 
@@ -155,4 +179,4 @@ const deleteUser = async (req, res) => {
 };
 
 // exporting both register and login function
-module.exports = { registerUser, loginUser, updateUser, deleteUser };
+module.exports = { registerUser, loginUser, getData, updateUser, deleteUser };

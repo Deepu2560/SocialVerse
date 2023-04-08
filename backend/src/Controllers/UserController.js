@@ -13,14 +13,15 @@ const {
   loginUser,
   updateUser,
   deleteUser,
+  getData,
 } = require("./User.crud");
 
 // post '/' route is for registering new user
 router.post("/", registerUser);
 
-// get '/:id' route is for login of user.
+// post '/:id' route is for login of user.
 // In login process we are using user's email and password and check user exist with same password or not
-router.get("/", loginUser);
+router.post("/login", loginUser);
 
 // put '/:id' is to update user's data
 // In update process user can update only it's name and bio
@@ -31,38 +32,6 @@ router.delete("/:id", Athenticate, deleteUser);
 
 // get '/:id' route is for getting user data by there id
 // will not send user email and password for security purpose
-router.get("/:id", Athenticate, async (req, res) => {
-  try {
-    const user = await UserModel.findOne(req.params.id);
-
-    if (!user)
-      return res.status(404).send({
-        error: true,
-        message: "User not found.",
-      });
-
-    console.log(`==> ${req.params.id} data send successfully`);
-
-    res.status(200).send({
-      error: false,
-      data: {
-        name: user.name,
-        bio: user.bio,
-        username: user.username,
-        profilePic: user.profilePic,
-      },
-      message: "User data sent successfully",
-    });
-  } catch (error) {
-    console.log(
-      "=>> Server error while sending user data of perticular. ERROR:",
-      error.message,
-    );
-    return res.status(400).send({
-      error: true,
-      message: `Bad request. Try Again`,
-    });
-  }
-});
+router.get("/:id", Athenticate, getData);
 
 module.exports = router;

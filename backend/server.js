@@ -15,6 +15,11 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+// importing controllers
+const UserController = require("./src/Controllers/UserController");
+
+app.use("/users", UserController);
+
 // app.listen to start server on port. Here port is hidden for better security.
 app.listen(process.env.PORT, async (req, res) => {
   try {
