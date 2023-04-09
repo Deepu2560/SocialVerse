@@ -41,11 +41,11 @@ export default function PostAnalytics() {
                 height: "fit-content",
               }}
             >
-              <p className="h5"> Total number of users:</p>
+              <p className="h5"> Total number of posts:</p>
               <p className="h1">{postTotal}</p>
             </div>
             <div className="col">
-              <p className="h4"> Top 5 most active users:</p>
+              <p className="h4"> Top 5 most liked posts:</p>
               <PostTopLiked data={postTop} />
             </div>
           </div>

@@ -17,7 +17,9 @@ export default function CreatePost() {
       user_id: user._id,
       content: content.current.value,
     };
-    return dispatch(handlePost(dispatch, data));
+    dispatch(handlePost(dispatch, data));
+    content.current.value = "";
+    return;
   };
 
   return (

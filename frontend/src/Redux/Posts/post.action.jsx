@@ -39,7 +39,7 @@ export const handlePost = (dispatch, data) => {
   };
 };
 
-// function handleUserData get user data with the help of user id
+// function handlePostsData get all posts data
 export const handlePostsData = (dispatch, id) => {
   return function () {
     axios
@@ -49,7 +49,7 @@ export const handlePostsData = (dispatch, id) => {
       .then(({ data }) => {
         const { error, post, message } = data;
         if (error) {
-          console.log(message);
+          alert(message);
           return;
         }
         dispatch(postSuccess(post));
@@ -57,59 +57,59 @@ export const handlePostsData = (dispatch, id) => {
       })
       .catch((err) => {
         dispatch(authError());
-        console.log(err);
+        alert("Something went wrong. Please try again!");
         return;
       });
   };
 };
 
-// function handleuserudate udpate user data with the help of userid
-export const handleUserUpdate = (dispatch, id, data) => {
+// function handlePostsUpdate udpate post with the help of post id
+export const handlePostsUpdate = (dispatch, id, data) => {
   return function () {
     axios
-      .post(`http://localhost:8080/posts/${id}`, data, {
+      .put(`http://localhost:8080/posts/${id}`, data, {
         Headers: { "Content-Type": "application/json", Accept: "*/*" },
       })
       .then(({ data }) => {
         const { error, user, message } = data;
         if (error) {
-          console.log(message);
+          alert(message);
           return;
         }
-        handleUserData(dispatch, id, data);
+        dispatch(handlePostsData(dispatch, "all"));
         return;
       })
       .catch((err) => {
-        console.log(err);
+        alert("Something went wrong. Please try again!");
         return;
       });
   };
 };
 
-// function handleUserData delete user data with the help of user id
-export const handleUserDelete = (dispatch, id, data) => {
+// function handlePostsDelete delete post with the help of post id
+export const handlePostsDelete = (dispatch, id) => {
   return function () {
     axios
-      .delete(`http://localhost:8080/posts/${id}`, data, {
+      .delete(`http://localhost:8080/posts/${id}`, {
         Headers: { "Content-Type": "application/json", Accept: "*/*" },
       })
       .then(({ data }) => {
-        const { error, user, message } = data;
+        const { error, message } = data;
         if (error) {
-          console.log(message);
+          alert(message);
           return;
         }
-        dispatch(authSuccess(user));
+        dispatch(handlePostsData(dispatch, "all"));
         return;
       })
       .catch((err) => {
-        dispatch(authError());
-        console.log(err);
+        alert("Something went wrong. Please try again!");
         return;
       });
   };
 };
 
+// function handlePostLike is increment likes for post with that id
 export const handlePostLike = (dispatch, id) => {
   return function () {
     axios
@@ -130,6 +130,7 @@ export const handlePostLike = (dispatch, id) => {
   };
 };
 
+// function handlePostUnLike is decrement likes for post with that id
 export const handlePostUnLike = (dispatch, id) => {
   return function () {
     axios

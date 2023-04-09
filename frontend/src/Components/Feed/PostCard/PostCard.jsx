@@ -5,14 +5,17 @@ import {
   handlePostUnLike,
 } from "../../../Redux/Posts/post.action";
 import "./PostCard.css";
+import { useNavigate } from "react-router";
 
 export default function PostCard({ data }) {
   const [liked, setLiked] = useState(false);
   const { isAuth } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   return (
     <div className="text-left border border-success mt-3 mb-3 p-3 rounded-3">
-      <pre className="font-weight-bold border mx-auto text-left p-3 rounded-3 post-content-div">
+      <pre className="font-weight-bold bg-light text-dark border mx-auto text-left p-3 rounded-3 post-content-div w-100">
         {data.content}
       </pre>
       <p className="h6 mx-3">Likes: {data.likes}</p>
@@ -39,7 +42,12 @@ export default function PostCard({ data }) {
               unlike
             </button>
           )}
-          <button className="btn btn-outline-secondary ml-2">edit</button>
+          <button
+            className="btn btn-outline-secondary ml-2"
+            onClick={() => navigate(`/post/${data._id}`)}
+          >
+            edit
+          </button>
         </div>
       ) : (
         <div className="d-flex gap-1">

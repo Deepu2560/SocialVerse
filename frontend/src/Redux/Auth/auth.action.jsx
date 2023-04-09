@@ -67,19 +67,21 @@ export const handleUserData = (dispatch, id) => {
 };
 
 // function handleuserudate udpate user data with the help of userid
-export const handleUserUpdate = (dispatch, id, data) => {
+export const handleUserUpdate = (dispatch, id, current, data) => {
   return function () {
     axios
-      .post(`http://localhost:8080/users/${id}`, data, {
+      .put(`http://localhost:8080/users/${id}`, data, {
         Headers: { "Content-Type": "application/json", Accept: "*/*" },
       })
       .then(({ data }) => {
         const { error, user, message } = data;
         if (error) {
-          console.log(message);
+          alert(message);
           return;
         }
-        handleUserData(dispatch, id, data);
+        if (current) {
+          dispatch(UpdateCurrentUser(dispatch, id));
+        }
         return;
       })
       .catch((err) => {
@@ -89,8 +91,29 @@ export const handleUserUpdate = (dispatch, id, data) => {
   };
 };
 
+export const UpdateCurrentUser = (dispatch, id) => {
+  return function () {
+    axios
+      .get(`http://localhost:8080/users/${id}`)
+      .then(({ data }) => {
+        const { error, user, message } = data;
+        if (error) {
+          alert(message);
+          return;
+        }
+        dispatch(authSuccess(user));
+        return;
+      })
+      .catch((err) => {
+        alert("Something went wrong. Please try again!");
+        console.log(err);
+        return;
+      });
+  };
+};
+
 // function handleUserData delete user data with the help of user id
-export const handleUserDelete = (dispatch, id, data) => {
+export const handleUserDelete = (dispatch, id, current, data) => {
   return function () {
     axios
       .delete(`http://localhost:8080/users/${id}`, data, {
@@ -99,14 +122,19 @@ export const handleUserDelete = (dispatch, id, data) => {
       .then(({ data }) => {
         const { error, message } = data;
         if (error) {
-          console.log(message);
+          alert(message);
           return;
         }
-        dispatch(handleLogOut(dispatch));
+        alert(message);
+        if (current) {
+          dispatch(handleLogOut(dispatch));
+        } else {
+          dispatch(handleUserData(dispatch, "all"));
+        }
         return;
       })
       .catch((err) => {
-        console.log(err);
+        alert("Something went wrong. Please try again");
         return;
       });
   };

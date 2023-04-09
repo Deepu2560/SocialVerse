@@ -45,7 +45,7 @@ router.get("/all", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     const post =
-      req.params.id == "all"
+      req.params.id != "all"
         ? await PostModel.findById(req.params.id)
         : await PostModel.find();
 

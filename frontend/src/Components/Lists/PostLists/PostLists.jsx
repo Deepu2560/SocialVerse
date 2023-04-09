@@ -3,11 +3,14 @@ import {
   handlePostLike,
   handlePostUnLike,
 } from "../../../Redux/Posts/post.action";
+import { useNavigate } from "react-router";
 
 export default function PostLists() {
   const { posts } = useSelector((state) => state.posts);
   const { isAuth } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   return (
     <div className="container">
       <p className="h2">List of all posts:</p>
@@ -56,18 +59,21 @@ export default function PostLists() {
                         <i
                           className="bi bi-card-heading"
                           style={{ fontSize: "1.5rem", cursor: "pointer" }}
+                          onClick={() => navigate(`/post/${elem._id}`)}
                         ></i>
                       </td>
                       <td>
                         <i
                           className="bi bi-pencil-square"
                           style={{ fontSize: "1.5rem", cursor: "pointer" }}
+                          onClick={() => navigate(`/post/${elem._id}`)}
                         ></i>
                       </td>
                       <td>
                         <i
                           className="bi bi-trash"
                           style={{ fontSize: "1.5rem", cursor: "pointer" }}
+                          onClick={() => navigate(`/post/${elem._id}`)}
                         ></i>
                       </td>
                     </>

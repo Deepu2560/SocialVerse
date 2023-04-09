@@ -1,7 +1,10 @@
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router";
 
 export default function UserLists() {
   const { all } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
+
   console.log(all);
   return (
     <div className="container">
@@ -29,18 +32,21 @@ export default function UserLists() {
                     <i
                       className="bi bi-person-circle"
                       style={{ fontSize: "1.5rem", cursor: "pointer" }}
+                      onClick={() => navigate(`/user/${elem._id}`)}
                     ></i>
                   </td>
                   <td>
                     <i
                       className="bi bi-pencil-square"
                       style={{ fontSize: "1.5rem", cursor: "pointer" }}
+                      onClick={() => navigate(`/user/${elem._id}`)}
                     ></i>
                   </td>
                   <td>
                     <i
                       className="bi bi-trash"
                       style={{ fontSize: "1.5rem", cursor: "pointer" }}
+                      onClick={() => navigate(`/user/${elem._id}`)}
                     ></i>
                   </td>
                 </tr>
