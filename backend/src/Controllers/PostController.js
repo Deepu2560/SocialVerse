@@ -44,7 +44,10 @@ router.get("/all", async (req, res) => {
 // get '/:id' route is for getting post with use of post id.
 router.get("/:id", async (req, res) => {
   try {
-    const post = await PostModel.findById(req.params.id);
+    const post =
+      req.params.id == "all"
+        ? await PostModel.findById(req.params.id)
+        : await PostModel.find();
 
     console.log(`==> ${post.user_id} is getting ${req.params.id} post`);
 

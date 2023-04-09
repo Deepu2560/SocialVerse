@@ -19,7 +19,7 @@ const registerUser = async (req, res) => {
 
     return res
       .status(201)
-      .send({ error: true, user, message: "User Registered successfully" });
+      .send({ error: false, user, message: "User Registered successfully" });
   } catch (error) {
     console.log(
       "=>> Server error while registering new user. ERROR:",
@@ -73,7 +73,10 @@ const loginUser = async (req, res) => {
 // getData function for getting data of user with use of id
 const getData = async (req, res) => {
   try {
-    const user = await UserModel.findById(req.params.id);
+    const user =
+      req.params.id !== "all"
+        ? await UserModel.findById(req.params.id)
+        : await UserModel.find();
 
     if (!user)
       return res.status(404).send({

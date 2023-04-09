@@ -6,9 +6,9 @@ export default function PostCard({ data }) {
   return (
     <div className="text-left border border-success mt-3 mb-3 p-3 rounded-3">
       <pre className="font-weight-bold border mx-auto text-left p-3 rounded-3 post-content-div">
-        Hello world, <br />
-        My name is Deepanshu Gulia.
+        {data.content}
       </pre>
+      <p className="h6 mx-3">Likes: {data.likes}</p>
       <div className="d-flex gap-1">
         {!liked ? (
           <button
