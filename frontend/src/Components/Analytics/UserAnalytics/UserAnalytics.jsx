@@ -1,7 +1,7 @@
 import PieChartAnalytics from "../PieChartAnalytic/PieChartAnalytics";
 import UserTopActive from "../TopList/UserTopActive";
 
-export function UserAnalytics() {
+export default function UserAnalytics() {
   return (
     <div>
       <p className="h2 text-center text-decoration-underline text-success mb-3">

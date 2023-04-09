@@ -1,7 +1,7 @@
 export default function PostTopLiked({ data }) {
   return (
     <div className="table-responsive">
-      <table class="table">
+      <table className="table">
         <thead className="table-success">
           <tr>
             <th scope="col">id</th>

@@ -4,17 +4,15 @@ import Navbar from "./Components/Navbar/Navbar";
 import Feeds from "./Components/Feed/Feed";
 import UserLists from "./Components/Lists/UserLists/UserLists";
 import PostLists from "./Components/Lists/PostLists/PostLists";
-import { UserAnalytics } from "./Components/Analytics/UserAnalytics/UserAnalytics";
-import { PostAnalytics } from "./Components/Analytics/PostAnalytics/PostAnlaytics";
+import UserAnalytics from "./Components/Analytics/UserAnalytics/UserAnalytics";
+import PostAnalytics from "./Components/Analytics/PostAnalytics/PostAnlaytics";
+import Authentication from "./Components/Auth/Auth";
 
 function App() {
   return (
-    <div
-      className="App"
-      style={{ "--theme-bg": "#393939", "--theme-text-clr": "#f5f5f5" }}
-    >
+    <div className="App">
       <Navbar />
-      <PostAnalytics />
+      <Feeds />
     </div>
   );
 }

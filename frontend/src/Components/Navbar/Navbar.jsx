@@ -2,19 +2,19 @@ import "./Navbar.css";
 
 function Navbar() {
   return (
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top">
-      <a class="navbar-brand" href="#">
+    <nav className="navbar navbar-expand-md navbar-dark fixed-top">
+      <a className="navbar-brand" href="#">
         <img
           src="/Images/logo.png"
           width="30"
           height="30"
-          class="d-inline-block align-top nav-brand-image mr-2"
+          className="d-inline-block align-top nav-brand-image mr-2"
           alt="Brand logo"
         />
         SocialVerse
       </a>
       <button
-        class="navbar-toggler"
+        className="navbar-toggler"
         type="button"
         data-toggle="collapse"
         data-target="#navbarNav"
@@ -22,18 +22,18 @@ function Navbar() {
         aria-expanded="false"
         aria-label="Toggle navigation"
       >
-        <span class="navbar-toggler-icon"></span>
+        <span className="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">
-              Feed <span class="sr-only">(current)</span>
+      <div className="collapse navbar-collapse" id="navbarNav">
+        <ul className="navbar-nav ml-auto">
+          <li className="nav-item active">
+            <a className="nav-link" href="#">
+              Feed <span className="sr-only">(current)</span>
             </a>
           </li>
-          <li class="nav-item dropdown">
+          <li className="nav-item dropdown">
             <a
-              class="nav-link dropdown-toggle"
+              className="nav-link dropdown-toggle"
               href="#"
               id="navbarDropdown"
               role="button"
@@ -44,21 +44,21 @@ function Navbar() {
               Analytics
             </a>
             <div
-              class="dropdown-menu dropdown-menu-right"
+              className="dropdown-menu dropdown-menu-right"
               aria-labelledby="navbarDropdown"
             >
-              <a class="dropdown-item" href="#">
+              <a className="dropdown-item" href="#">
                 User analytics
               </a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">
+              <div className="dropdown-divider"></div>
+              <a className="dropdown-item" href="#">
                 Post analytics
               </a>
             </div>
           </li>
-          <li class="nav-item dropdown">
+          <li className="nav-item dropdown">
             <a
-              class="nav-link dropdown-toggle"
+              className="nav-link dropdown-toggle"
               href="#"
               id="navbarDropdown-2"
               role="button"
@@ -69,21 +69,21 @@ function Navbar() {
               Lists
             </a>
             <div
-              class="dropdown-menu dropdown-menu-right"
+              className="dropdown-menu dropdown-menu-right"
               aria-labelledby="navbarDropdown-2"
               data-bs-theme="dark"
             >
-              <a class="dropdown-item" href="#">
+              <a className="dropdown-item" href="#">
                 User List
               </a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">
+              <div className="dropdown-divider"></div>
+              <a className="dropdown-item" href="#">
                 Post List
               </a>
             </div>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
+          <li className="nav-item">
+            <a className="nav-link" href="#">
               Login
             </a>
           </li>

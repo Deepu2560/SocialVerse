@@ -3,7 +3,7 @@ export default function UserLists() {
     <div className="container">
       <p className="h2">List of all users:</p>
       <div className="table-responsive">
-        <table class="table">
+        <table className="table">
           <thead className="table-success">
             <tr>
               <th scope="col">id</th>
@@ -21,19 +21,19 @@ export default function UserLists() {
               <td>Otto</td>
               <td>
                 <i
-                  class="bi bi-person-circle"
+                  className="bi bi-person-circle"
                   style={{ fontSize: "1.5rem", cursor: "pointer" }}
                 ></i>
               </td>
               <td>
                 <i
-                  class="bi bi-pencil-square"
+                  className="bi bi-pencil-square"
                   style={{ fontSize: "1.5rem", cursor: "pointer" }}
                 ></i>
               </td>
               <td>
                 <i
-                  class="bi bi-trash"
+                  className="bi bi-trash"
                   style={{ fontSize: "1.5rem", cursor: "pointer" }}
                 ></i>
               </td>
@@ -44,19 +44,19 @@ export default function UserLists() {
               <td>Thornton</td>
               <td>
                 <i
-                  class="bi bi-person-circle"
+                  className="bi bi-person-circle"
                   style={{ fontSize: "1.5rem", cursor: "pointer" }}
                 ></i>
               </td>
               <td>
                 <i
-                  class="bi bi-pencil-square"
+                  className="bi bi-pencil-square"
                   style={{ fontSize: "1.5rem", cursor: "pointer" }}
                 ></i>
               </td>
               <td>
                 <i
-                  class="bi bi-trash"
+                  className="bi bi-trash"
                   style={{ fontSize: "1.5rem", cursor: "pointer" }}
                 ></i>
               </td>
@@ -67,19 +67,19 @@ export default function UserLists() {
               <td>@twitter</td>
               <td>
                 <i
-                  class="bi bi-person-circle"
+                  className="bi bi-person-circle"
                   style={{ fontSize: "1.5rem", cursor: "pointer" }}
                 ></i>
               </td>
               <td>
                 <i
-                  class="bi bi-pencil-square"
+                  className="bi bi-pencil-square"
                   style={{ fontSize: "1.5rem", cursor: "pointer" }}
                 ></i>
               </td>
               <td>
                 <i
-                  class="bi bi-trash"
+                  className="bi bi-trash"
                   style={{ fontSize: "1.5rem", cursor: "pointer" }}
                 ></i>
               </td>

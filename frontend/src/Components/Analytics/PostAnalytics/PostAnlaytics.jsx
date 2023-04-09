@@ -1,7 +1,7 @@
 import PieChartAnalytics from "../PieChartAnalytic/PieChartAnalytics";
 import PostTopLiked from "../TopList/PostTopLiked";
 
-export function PostAnalytics() {
+export default function PostAnalytics() {
   return (
     <div>
       <p className="h2 text-center text-decoration-underline text-success mb-3">

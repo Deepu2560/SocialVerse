@@ -3,7 +3,7 @@ export default function PostLists() {
     <div className="container">
       <p className="h2">List of all posts:</p>
       <div className="table-responsive">
-        <table class="table">
+        <table className="table">
           <thead className="table-success">
             <tr>
               <th scope="col">id</th>
@@ -27,70 +27,31 @@ export default function PostLists() {
               <th>1</th>
               <td>
                 <i
-                  class="bi bi-heart"
+                  className="bi bi-heart"
                   style={{ fontSize: "1.5rem", cursor: "pointer" }}
                 ></i>
               </td>
               <td>
                 <i
-                  class="bi bi-heartbreak"
+                  className="bi bi-heartbreak"
                   style={{ fontSize: "1.5rem", cursor: "pointer" }}
                 ></i>
               </td>
               <td>
                 <i
-                  class="bi bi-card-heading"
+                  className="bi bi-card-heading"
                   style={{ fontSize: "1.5rem", cursor: "pointer" }}
                 ></i>
               </td>
               <td>
                 <i
-                  class="bi bi-pencil-square"
+                  className="bi bi-pencil-square"
                   style={{ fontSize: "1.5rem", cursor: "pointer" }}
                 ></i>
               </td>
               <td>
                 <i
-                  class="bi bi-trash"
-                  style={{ fontSize: "1.5rem", cursor: "pointer" }}
-                ></i>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">1asdfasdfasfasdfasdf</th>
-              <td>
-                Hello world ok aker aonasdf aoaeranfd asdfoasdnfas
-                fdasdfasdfasdf afasdfasfd asdfasfasdfasfda sf afasfasdfasdf
-                afdasdfasf
-              </td>
-              <th>1</th>
-              <td>
-                <i
-                  class="bi bi-heart"
-                  style={{ fontSize: "1.5rem", cursor: "pointer" }}
-                ></i>
-              </td>
-              <td>
-                <i
-                  class="bi bi-heartbreak"
-                  style={{ fontSize: "1.5rem", cursor: "pointer" }}
-                ></i>
-              </td>
-              <td>
-                <i
-                  class="bi bi-person-circle"
-                  style={{ fontSize: "1.5rem", cursor: "pointer" }}
-                ></i>
-              </td>
-              <td>
-                <i
-                  class="bi bi-pencil-square"
-                  style={{ fontSize: "1.5rem", cursor: "pointer" }}
-                ></i>
-              </td>
-              <td>
-                <i
-                  class="bi bi-trash"
+                  className="bi bi-trash"
                   style={{ fontSize: "1.5rem", cursor: "pointer" }}
                 ></i>
               </td>
@@ -105,31 +66,70 @@ export default function PostLists() {
               <th>1</th>
               <td>
                 <i
-                  class="bi bi-heart"
+                  className="bi bi-heart"
                   style={{ fontSize: "1.5rem", cursor: "pointer" }}
                 ></i>
               </td>
               <td>
                 <i
-                  class="bi bi-heartbreak"
+                  className="bi bi-heartbreak"
                   style={{ fontSize: "1.5rem", cursor: "pointer" }}
                 ></i>
               </td>
               <td>
                 <i
-                  class="bi bi-person-circle"
+                  className="bi bi-person-circle"
                   style={{ fontSize: "1.5rem", cursor: "pointer" }}
                 ></i>
               </td>
               <td>
                 <i
-                  class="bi bi-pencil-square"
+                  className="bi bi-pencil-square"
                   style={{ fontSize: "1.5rem", cursor: "pointer" }}
                 ></i>
               </td>
               <td>
                 <i
-                  class="bi bi-trash"
+                  className="bi bi-trash"
+                  style={{ fontSize: "1.5rem", cursor: "pointer" }}
+                ></i>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">1asdfasdfasfasdfasdf</th>
+              <td>
+                Hello world ok aker aonasdf aoaeranfd asdfoasdnfas
+                fdasdfasdfasdf afasdfasfd asdfasfasdfasfda sf afasfasdfasdf
+                afdasdfasf
+              </td>
+              <th>1</th>
+              <td>
+                <i
+                  className="bi bi-heart"
+                  style={{ fontSize: "1.5rem", cursor: "pointer" }}
+                ></i>
+              </td>
+              <td>
+                <i
+                  className="bi bi-heartbreak"
+                  style={{ fontSize: "1.5rem", cursor: "pointer" }}
+                ></i>
+              </td>
+              <td>
+                <i
+                  className="bi bi-person-circle"
+                  style={{ fontSize: "1.5rem", cursor: "pointer" }}
+                ></i>
+              </td>
+              <td>
+                <i
+                  className="bi bi-pencil-square"
+                  style={{ fontSize: "1.5rem", cursor: "pointer" }}
+                ></i>
+              </td>
+              <td>
+                <i
+                  className="bi bi-trash"
                   style={{ fontSize: "1.5rem", cursor: "pointer" }}
                 ></i>
               </td>
