@@ -9,8 +9,18 @@ const postSchema = new mongoose.Schema(
       ref: "users",
       required: true,
     },
-    content: { type: String, required: true, minlength: 1, maxlength: 300 },
-    likes: { type: Number, required: false, min: 0, default: 0 },
+    content: {
+      type: String,
+      required: true,
+      minlength: 1,
+      maxlength: 300,
+    },
+    likes: {
+      type: Number,
+      required: false,
+      min: 0,
+      default: 0,
+    },
   },
   {
     versionKey: false,

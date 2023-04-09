@@ -45,3 +45,5 @@ app.listen(process.env.PORT || 3000, async (req, res) => {
     console.log(`===>>> Server status: stopd with Error = ${error.message}`);
   }
 });
+
+module.exports = app;

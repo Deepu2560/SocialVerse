@@ -15,7 +15,7 @@ const registerUser = async (req, res) => {
 
     user = await UserModel.create(req.body);
 
-    console.log(`==> ${req.email} is registered.`);
+    console.log(`==> ${req.body._id} is registered.`);
 
     return res
       .status(201)
@@ -27,7 +27,7 @@ const registerUser = async (req, res) => {
     );
     return res.status(400).send({
       error: true,
-      message: `=>> Server error while registering new user. ERROR: ${error.message}`,
+      message: `Bad Request. ERROR: ${error.message}`,
     });
   }
 };
