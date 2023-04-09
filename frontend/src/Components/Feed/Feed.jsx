@@ -4,7 +4,7 @@ import UserDetails from "./Userdetails/UserDetails";
 
 export default function Feeds() {
   return (
-    <div className="container-xxl text-center mt-5 pt-3">
+    <div className="container-xxl text-center">
       <div className="row">
         <UserDetails />
         <div className="col posts-feed-div">
