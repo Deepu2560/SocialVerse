@@ -4,20 +4,19 @@ const express = require("express");
 // router to perform all router methods
 const router = express.Router();
 
-// importing post model and Athentication middleware.
-// Athenticate middleware will check if the request is getting from genuine user
-// Athentication is done for security purpose
-const Athenticate = require("../Middlewares/Athenticate.middleware");
+// importing post model.
 const PostModel = require("../Models/Posts.model");
 
 // post '/' route is for registering new user
-router.post("/", Athenticate, async (req, res) => {
+router.post("/", async (req, res) => {
   try {
-    const post = await PostModel.create({ ...req.body, user_id: req.user._id });
+    const post = await PostModel.create(req.body);
 
-    console.log(`==> new post by ${req.user._id}`);
+    console.log(`==> new post by ${req.body.user_id}`);
 
-    res.status(202).send({ error: false, message: "posted successfully" });
+    res
+      .status(202)
+      .send({ error: false, post, message: "posted successfully" });
   } catch (error) {
     console.log("ERROR: While posting new post", error.message);
     res
@@ -26,24 +25,8 @@ router.post("/", Athenticate, async (req, res) => {
   }
 });
 
-// get '/user' route is for getting post of a perticular user.
-router.get("/user", Athenticate, async (req, res) => {
-  try {
-    const post = await PostModel.find({ user_id: req.user._id });
-
-    console.log(`==> ${post.user_id} is getting it's all posts`);
-
-    res
-      .status(200)
-      .send({ error: false, message: "Post got successfully", post });
-  } catch (error) {
-    console.log("ERROR: While getting all post of user", error.message);
-    res.status(400).send({ error: true, message: "Pad request" });
-  }
-});
-
 // get '/all' route is for getting all posts.
-router.get("/all", Athenticate, async (req, res) => {
+router.get("/all", async (req, res) => {
   try {
     const post = await PostModel.find().sort({ createdAt: -1 });
 
@@ -59,7 +42,7 @@ router.get("/all", Athenticate, async (req, res) => {
 });
 
 // get '/:id' route is for getting post with use of post id.
-router.get("/:id", Athenticate, async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
     const post = await PostModel.findById(req.params.id);
 
@@ -75,7 +58,7 @@ router.get("/:id", Athenticate, async (req, res) => {
 });
 
 // put '/:id' route is for updating post with use of post id.
-router.put("/:id", Athenticate, async (req, res) => {
+router.put("/:id", async (req, res) => {
   try {
     const post = await PostModel.findById(req.params.id);
 
@@ -104,11 +87,11 @@ router.put("/:id", Athenticate, async (req, res) => {
 });
 
 // delete '/:id' route is for deleting post with use of post id.
-router.delete("/:id", Athenticate, async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
     const post = await PostModel.findByIdAndDelete(req.params.id);
 
-    console.log(`==> ${req.user._id} deleted ${req.params.id} post`);
+    console.log(`==> ${req.params.id} post delete successfully`);
 
     res.status(200).send({
       error: false,
@@ -121,7 +104,7 @@ router.delete("/:id", Athenticate, async (req, res) => {
 });
 
 // post '/:id/like' route is for liking post with use of post id.
-router.post("/:id/like", Athenticate, async (req, res) => {
+router.post("/:id/like", async (req, res) => {
   try {
     const post = await PostModel.findById(req.params.id);
     if (!post) {
@@ -144,7 +127,7 @@ router.post("/:id/like", Athenticate, async (req, res) => {
 });
 
 // post '/:id/unlike' route is for unliking post with use of post id.
-router.post("/:id/unlike", Athenticate, async (req, res) => {
+router.post("/:id/unlike", async (req, res) => {
   try {
     const post = await PostModel.findById(req.params.id);
     if (!post) {

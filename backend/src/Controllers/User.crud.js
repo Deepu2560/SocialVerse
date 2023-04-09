@@ -1,15 +1,6 @@
 // this file contain crud operation for a user data
-// importing jsonwebtoken and user model.
-const jwt = require("jsonwebtoken");
-
+// importing usermodel.
 const UserModel = require("../Models/User.model");
-
-// newToken for assigning new token to user
-// JWT key is used to assign token to user and when required user detail by token this key is required
-// So, this is important hide this jsonwebtoken key
-const newToken = (user) => {
-  return jwt.sign({ user }, `${process.env.JWT_KEY}`);
-};
 
 // register function for registering new user to database.
 const registerUser = async (req, res) => {
@@ -24,13 +15,11 @@ const registerUser = async (req, res) => {
 
     user = await UserModel.create(req.body);
 
-    const token = newToken(user);
-
     console.log(`==> ${req.email} is registered.`);
 
     return res
       .status(201)
-      .send({ error: true, token, message: "User Registered successfully" });
+      .send({ error: true, user, message: "User Registered successfully" });
   } catch (error) {
     console.log(
       "=>> Server error while registering new user. ERROR:",
@@ -62,19 +51,11 @@ const loginUser = async (req, res) => {
         message: "Please check email and password",
       });
 
-    const token = newToken(user);
-
     console.log(`==> ${req.body.email} is logedin`);
 
     res.status(200).send({
       error: false,
-      token,
-      data: {
-        username: user.username,
-        profilePic: user.profilePic,
-        bio: user.bio,
-        name: user.name,
-      },
+      user,
       message: "User successfully logedin",
     });
   } catch (error) {
@@ -104,7 +85,7 @@ const getData = async (req, res) => {
 
     res.status(200).send({
       error: false,
-      data: user,
+      user,
       message: "User data sent successfully",
     });
   } catch (error) {
@@ -137,13 +118,13 @@ const updateUser = async (req, res) => {
       },
     });
 
-    const token = newToken(user);
-
     console.log(`==> ${req.params.id} data updated successfully`);
 
-    res
-      .status(200)
-      .send({ error: false, token, message: "User Data updated successfully" });
+    res.status(200).send({
+      error: false,
+      user: userUpdated,
+      message: "User Data updated successfully",
+    });
   } catch (error) {
     console.log(
       "=>> Server error while updating data proccess of user. ERROR:",
