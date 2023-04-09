@@ -4,13 +4,15 @@ import UserDetails from "./Userdetails/UserDetails";
 
 export default function Feeds() {
   return (
-    <div className="container-xxl d-flex gap-4 text-center mt-5 pt-3">
-      <div className="col posts-feed-div">
-        {[1, 2, 3].map(() => (
-          <PostCard />
-        ))}
+    <div className="container-xxl text-center mt-5 pt-3">
+      <div className="row">
+        <UserDetails />
+        <div className="col posts-feed-div">
+          {[1, 2, 3, 3, 3, 4, 5, 5, 34, 2, 2, 2].map(() => (
+            <PostCard />
+          ))}
+        </div>
       </div>
-      <UserDetails />
     </div>
   );
 }

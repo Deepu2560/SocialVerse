@@ -1,10 +1,11 @@
 .user-details {
   height: fit-content;
   top: 10%;
+  position: sticky;
 }
 
 .posts-feed-div {
-  min-height: 95vh;
+  min-height: 50vh;
 }
 
 #newposttextarea,
@@ -15,4 +16,12 @@
 
 #newposttextarea::placeholder {
   color: var(--theme-text-clr);
+}
+
+@media (max-width: 600px) {
+  .user-details {
+    position: static;
+    width: 95%;
+    margin: auto;
+  }
 }
