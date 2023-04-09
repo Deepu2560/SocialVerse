@@ -3,7 +3,7 @@ import "./Navbar.css";
 function Navbar() {
   return (
     <nav className="navbar navbar-expand-md navbar-dark fixed-top">
-      <a className="navbar-brand" href="#">
+      <a className="navbar-brand" href="/">
         <img
           src="/Images/logo.png"
           width="30"
@@ -19,7 +19,7 @@ function Navbar() {
         data-toggle="collapse"
         data-target="#navbarNav"
         aria-controls="navbarNav"
-        aria-expanded="false"
+        aria-expanded="true"
         aria-label="Toggle navigation"
       >
         <span className="navbar-toggler-icon"></span>
@@ -27,8 +27,8 @@ function Navbar() {
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav ml-auto">
           <li className="nav-item active">
-            <a className="nav-link" href="#">
-              Feed <span className="sr-only">(current)</span>
+            <a className="nav-link" href="/">
+              Feed
             </a>
           </li>
           <li className="nav-item dropdown">
@@ -47,11 +47,11 @@ function Navbar() {
               className="dropdown-menu dropdown-menu-right"
               aria-labelledby="navbarDropdown"
             >
-              <a className="dropdown-item" href="#">
+              <a className="dropdown-item" href="/user-analytics">
                 User analytics
               </a>
               <div className="dropdown-divider"></div>
-              <a className="dropdown-item" href="#">
+              <a className="dropdown-item" href="/post-analytics">
                 Post analytics
               </a>
             </div>
@@ -73,17 +73,17 @@ function Navbar() {
               aria-labelledby="navbarDropdown-2"
               data-bs-theme="dark"
             >
-              <a className="dropdown-item" href="#">
+              <a className="dropdown-item" href="/user-list">
                 User List
               </a>
               <div className="dropdown-divider"></div>
-              <a className="dropdown-item" href="#">
+              <a className="dropdown-item" href="/post-list">
                 Post List
               </a>
             </div>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">
+            <a className="nav-link" href="/auth">
               Login
             </a>
           </li>
