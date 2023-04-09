@@ -1,0 +1,18 @@
+.user-details {
+  height: fit-content;
+  top: 10%;
+}
+
+.posts-feed-div {
+  min-height: 95vh;
+}
+
+#newposttextarea,
+.newpostbutton {
+  background-color: var(--theme-bg);
+  color: var(--theme-text-clr);
+}
+
+#newposttextarea::placeholder {
+  color: var(--theme-text-clr);
+}

@@ -1,0 +1,9 @@
+.nav-brand-image {
+  background-color: white;
+  padding: 5px;
+  border-radius: 100%;
+}
+
+.navbar-dark {
+  background: var(--theme-color);
+}

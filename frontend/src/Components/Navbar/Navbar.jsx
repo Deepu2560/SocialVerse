@@ -1,8 +1,17 @@
+import "./Navbar.css";
+
 function Navbar() {
   return (
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top">
       <a class="navbar-brand" href="#">
-        Awesome Navbar
+        <img
+          src="/Images/logo.png"
+          width="30"
+          height="30"
+          class="d-inline-block align-top nav-brand-image mr-2"
+          alt="Brand logo"
+        />
+        SocialVerse
       </a>
       <button
         class="navbar-toggler"
@@ -19,12 +28,12 @@ function Navbar() {
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
             <a class="nav-link" href="#">
-              Home <span class="sr-only">(current)</span>
+              Feed <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">
-              About
+              Analytics
             </a>
           </li>
           <li class="nav-item">
