@@ -1,9 +1,15 @@
+import { Link } from "react-router-dom";
 import "./Navbar.css";
+import { useSelector, useDispatch } from "react-redux";
+import { handleLogOut } from "../../Redux/Auth/auth.action";
 
 function Navbar() {
+  const { isAuth } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+
   return (
     <nav className="navbar navbar-expand-md navbar-dark fixed-top">
-      <a className="navbar-brand" href="/">
+      <Link className="navbar-brand" to="/">
         <img
           src="/Images/logo.png"
           width="30"
@@ -12,7 +18,7 @@ function Navbar() {
           alt="Brand logo"
         />
         SocialVerse
-      </a>
+      </Link>
       <button
         className="navbar-toggler"
         type="button"
@@ -27,14 +33,13 @@ function Navbar() {
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav ml-auto">
           <li className="nav-item active">
-            <a className="nav-link" href="/">
+            <Link className="nav-link" to="/">
               Feed
-            </a>
+            </Link>
           </li>
           <li className="nav-item dropdown">
-            <a
-              className="nav-link dropdown-toggle"
-              href="#"
+            <p
+              className="nav-link dropdown-toggle mx-0 mt-0 mb-0"
               id="navbarDropdown"
               role="button"
               data-toggle="dropdown"
@@ -42,24 +47,23 @@ function Navbar() {
               aria-expanded="false"
             >
               Analytics
-            </a>
+            </p>
             <div
               className="dropdown-menu dropdown-menu-right"
               aria-labelledby="navbarDropdown"
             >
-              <a className="dropdown-item" href="/user-analytics">
+              <Link className="dropdown-item" to="/user-analytics">
                 User analytics
-              </a>
+              </Link>
               <div className="dropdown-divider"></div>
-              <a className="dropdown-item" href="/post-analytics">
+              <Link className="dropdown-item" to="/post-analytics">
                 Post analytics
-              </a>
+              </Link>
             </div>
           </li>
           <li className="nav-item dropdown">
-            <a
-              className="nav-link dropdown-toggle"
-              href="#"
+            <p
+              className="nav-link dropdown-toggle  mx-0 mt-0 mb-0"
               id="navbarDropdown-2"
               role="button"
               data-toggle="dropdown"
@@ -67,26 +71,40 @@ function Navbar() {
               aria-expanded="false"
             >
               Lists
-            </a>
+            </p>
             <div
               className="dropdown-menu dropdown-menu-right"
               aria-labelledby="navbarDropdown-2"
               data-bs-theme="dark"
             >
-              <a className="dropdown-item" href="/user-list">
+              <Link className="dropdown-item" to="/user-list">
                 User List
-              </a>
+              </Link>
               <div className="dropdown-divider"></div>
-              <a className="dropdown-item" href="/post-list">
+              <Link className="dropdown-item" to="/post-list">
                 Post List
-              </a>
+              </Link>
             </div>
           </li>
-          <li className="nav-item">
-            <a className="nav-link" href="/auth">
-              Login
-            </a>
-          </li>
+          {!isAuth ? (
+            <li className="nav-item">
+              <Link className="nav-link" to="/auth">
+                Login
+              </Link>
+            </li>
+          ) : (
+            <li
+              className="nav-item"
+              onClick={() => dispatch(handleLogOut(dispatch))}
+            >
+              <p
+                className="nav-link mx-0 mt-0 mb-0"
+                style={{ cursor: "pointer" }}
+              >
+                Logout
+              </p>
+            </li>
+          )}
         </ul>
       </div>
     </nav>

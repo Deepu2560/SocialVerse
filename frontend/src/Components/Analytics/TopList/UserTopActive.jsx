@@ -1,4 +1,5 @@
 export default function UserTopActive({ data }) {
+  console.log("data:", data);
   return (
     <div className="table-responsive">
       <table className="table">
@@ -6,18 +7,15 @@ export default function UserTopActive({ data }) {
           <tr>
             <th scope="col">Name</th>
             <th scope="col">Email</th>
-            <th scope="col">bio</th>
+            <th scope="col">Posts count</th>
           </tr>
         </thead>
         <tbody className="table-dark">
-          {data.map((elem) => (
-            <tr>
-              <th>Deepanshu Gulia</th>
-              <td>deep@gmail.com</td>
-              <td>
-                asdfasdfasdf asdfasdf aasdf asdfasdf asdfasdf asdfasdf asdfasdf
-                asdf asfd asdf{" "}
-              </td>
+          {data.map((elem, idx) => (
+            <tr key={idx}>
+              <th>{elem.name}</th>
+              <td>{elem.email}</td>
+              <td>{elem.postCount}</td>
             </tr>
           ))}
         </tbody>

@@ -1,4 +1,13 @@
+import { useSelector, useDispatch } from "react-redux";
+import {
+  handlePostLike,
+  handlePostUnLike,
+} from "../../../Redux/Posts/post.action";
+
 export default function PostLists() {
+  const { posts } = useSelector((state) => state.posts);
+  const { isAuth } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
   return (
     <div className="container">
       <p className="h2">List of all posts:</p>
@@ -17,123 +26,65 @@ export default function PostLists() {
             </tr>
           </thead>
           <tbody className="table-dark">
-            <tr>
-              <th scope="row">1asdfasdfasfasdfasdf</th>
-              <td>
-                Hello world ok aker aonasdf aoaeranfd asdfoasdnfas
-                fdasdfasdfasdf afasdfasfd asdfasfasdfasfda sf afasfasdfasdf
-                afdasdfasf
-              </td>
-              <th>1</th>
-              <td>
-                <i
-                  className="bi bi-heart"
-                  style={{ fontSize: "1.5rem", cursor: "pointer" }}
-                ></i>
-              </td>
-              <td>
-                <i
-                  className="bi bi-heartbreak"
-                  style={{ fontSize: "1.5rem", cursor: "pointer" }}
-                ></i>
-              </td>
-              <td>
-                <i
-                  className="bi bi-card-heading"
-                  style={{ fontSize: "1.5rem", cursor: "pointer" }}
-                ></i>
-              </td>
-              <td>
-                <i
-                  className="bi bi-pencil-square"
-                  style={{ fontSize: "1.5rem", cursor: "pointer" }}
-                ></i>
-              </td>
-              <td>
-                <i
-                  className="bi bi-trash"
-                  style={{ fontSize: "1.5rem", cursor: "pointer" }}
-                ></i>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">1asdfasdfasfasdfasdf</th>
-              <td>
-                Hello world ok aker aonasdf aoaeranfd asdfoasdnfas
-                fdasdfasdfasdf afasdfasfd asdfasfasdfasfda sf afasfasdfasdf
-                afdasdfasf
-              </td>
-              <th>1</th>
-              <td>
-                <i
-                  className="bi bi-heart"
-                  style={{ fontSize: "1.5rem", cursor: "pointer" }}
-                ></i>
-              </td>
-              <td>
-                <i
-                  className="bi bi-heartbreak"
-                  style={{ fontSize: "1.5rem", cursor: "pointer" }}
-                ></i>
-              </td>
-              <td>
-                <i
-                  className="bi bi-person-circle"
-                  style={{ fontSize: "1.5rem", cursor: "pointer" }}
-                ></i>
-              </td>
-              <td>
-                <i
-                  className="bi bi-pencil-square"
-                  style={{ fontSize: "1.5rem", cursor: "pointer" }}
-                ></i>
-              </td>
-              <td>
-                <i
-                  className="bi bi-trash"
-                  style={{ fontSize: "1.5rem", cursor: "pointer" }}
-                ></i>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">1asdfasdfasfasdfasdf</th>
-              <td>
-                Hello world ok aker aonasdf aoaeranfd asdfoasdnfas
-                fdasdfasdfasdf afasdfasfd asdfasfasdfasfda sf afasfasdfasdf
-                afdasdfasf
-              </td>
-              <th>1</th>
-              <td>
-                <i
-                  className="bi bi-heart"
-                  style={{ fontSize: "1.5rem", cursor: "pointer" }}
-                ></i>
-              </td>
-              <td>
-                <i
-                  className="bi bi-heartbreak"
-                  style={{ fontSize: "1.5rem", cursor: "pointer" }}
-                ></i>
-              </td>
-              <td>
-                <i
-                  className="bi bi-person-circle"
-                  style={{ fontSize: "1.5rem", cursor: "pointer" }}
-                ></i>
-              </td>
-              <td>
-                <i
-                  className="bi bi-pencil-square"
-                  style={{ fontSize: "1.5rem", cursor: "pointer" }}
-                ></i>
-              </td>
-              <td>
-                <i
-                  className="bi bi-trash"
-                  style={{ fontSize: "1.5rem", cursor: "pointer" }}
-                ></i>
-              </td>
-            </tr>
+            {posts.length ? (
+              posts.map((elem) => (
+                <tr key={elem._id}>
+                  <th scope="row">{elem._id}</th>
+                  <td>{elem.content}</td>
+                  <th>{elem.likes}</th>
+                  {isAuth ? (
+                    <>
+                      <td>
+                        <i
+                          className="bi bi-heart"
+                          style={{ fontSize: "1.5rem", cursor: "pointer" }}
+                          onClick={() =>
+                            dispatch(handlePostLike(dispatch, elem._id))
+                          }
+                        ></i>
+                      </td>
+                      <td>
+                        <i
+                          className="bi bi-heartbreak"
+                          style={{ fontSize: "1.5rem", cursor: "pointer" }}
+                          onClick={() =>
+                            dispatch(handlePostUnLike(dispatch, elem._id))
+                          }
+                        ></i>
+                      </td>
+                      <td>
+                        <i
+                          className="bi bi-card-heading"
+                          style={{ fontSize: "1.5rem", cursor: "pointer" }}
+                        ></i>
+                      </td>
+                      <td>
+                        <i
+                          className="bi bi-pencil-square"
+                          style={{ fontSize: "1.5rem", cursor: "pointer" }}
+                        ></i>
+                      </td>
+                      <td>
+                        <i
+                          className="bi bi-trash"
+                          style={{ fontSize: "1.5rem", cursor: "pointer" }}
+                        ></i>
+                      </td>
+                    </>
+                  ) : (
+                    <th className="text-center" colSpan={5}>
+                      Login to make changes
+                    </th>
+                  )}
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <th colSpan={8} className="text-center">
+                  Fetching posts...
+                </th>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>

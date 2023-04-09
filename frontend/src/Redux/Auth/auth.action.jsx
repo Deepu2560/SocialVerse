@@ -6,11 +6,13 @@ export const AUTH_LOADING = "AUTH_LOADING";
 export const AUTH = "AUTH";
 export const AUTH_ERROR = "AUTH_ERROR";
 export const LOG_OUT = "LOG_OUT";
+export const ALL_USER_DATA = "ALL_USER_DATA";
 
 // all functions for changing state of reducer
 export const authLoading = () => ({ type: AUTH_LOADING });
 export const authSuccess = (payload) => ({ type: AUTH, payload });
 export const authError = () => ({ type: AUTH_ERROR });
+export const allUsersData = (payload) => ({ type: ALL_USER_DATA, payload });
 export const logoutSuccess = () => ({ type: LOG_OUT });
 
 // function to handle login process
@@ -29,10 +31,35 @@ export const handlelogin = (dispatch, route, data) => {
           return;
         }
         dispatch(authSuccess(user));
+        dispatch(handleUserData(dispatch, "all"));
         return;
       })
       .catch((err) => {
         dispatch(authError());
+        console.log(err);
+        return;
+      });
+  };
+};
+
+// function handleUserData get user data with the help of user id
+export const handleUserData = (dispatch, id) => {
+  return function () {
+    axios
+      .get(`http://localhost:8080/users/${id}`, {
+        Headers: { "Content-Type": "application/json", Accept: "*/*" },
+      })
+      .then(({ data }) => {
+        const { error, user, message } = data;
+        if (error) {
+          alert(message);
+          return;
+        }
+        dispatch(allUsersData(user));
+        return;
+      })
+      .catch((err) => {
+        alert("Something went wrong. Please try again!");
         console.log(err);
         return;
       });
@@ -62,30 +89,6 @@ export const handleUserUpdate = (dispatch, id, data) => {
   };
 };
 
-// function handleUserData get user data with the help of user id
-export const handleUserData = (dispatch, id, data) => {
-  return function () {
-    axios
-      .get(`http://localhost:8080/users/${id}`, data, {
-        Headers: { "Content-Type": "application/json", Accept: "*/*" },
-      })
-      .then(({ data }) => {
-        const { error, user, message } = data;
-        if (error) {
-          console.log(message);
-          return;
-        }
-        dispatch(authSuccess(user));
-        return;
-      })
-      .catch((err) => {
-        dispatch(authError());
-        console.log(err);
-        return;
-      });
-  };
-};
-
 // function handleUserData delete user data with the help of user id
 export const handleUserDelete = (dispatch, id, data) => {
   return function () {
@@ -94,12 +97,12 @@ export const handleUserDelete = (dispatch, id, data) => {
         Headers: { "Content-Type": "application/json", Accept: "*/*" },
       })
       .then(({ data }) => {
-        const { error, user, message } = data;
+        const { error, message } = data;
         if (error) {
           console.log(message);
           return;
         }
-        dispatch(logoutSuccess(user));
+        dispatch(handleLogOut(dispatch));
         return;
       })
       .catch((err) => {
@@ -107,4 +110,9 @@ export const handleUserDelete = (dispatch, id, data) => {
         return;
       });
   };
+};
+
+// function handle logout of user
+export const handleLogOut = (dispatch) => {
+  return () => dispatch(logoutSuccess());
 };

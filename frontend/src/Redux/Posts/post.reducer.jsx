@@ -39,9 +39,12 @@ export const PostReducer = (state = initialStore, { type, payload }) => {
       return {
         ...state,
         isLoading: false,
-        posts: state.posts.filter((elem) =>
-          elem._id == payload.id ? (elem.likes += payload.num) : elem,
-        ),
+        posts: state.posts.filter((elem) => {
+          if (elem._id == payload.id) {
+            elem.likes = payload.likes;
+          }
+          return elem;
+        }),
         isError: false,
       };
     default:

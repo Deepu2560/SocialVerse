@@ -1,9 +1,10 @@
 import { useSelector, useDispatch } from "react-redux";
 import { handlePostsData } from "../../Redux/Posts/post.action";
+import { useEffect } from "react";
 import "./Feed.css";
 import PostCard from "./PostCard/PostCard";
 import UserDetails from "./Userdetails/UserDetails";
-import { useEffect } from "react";
+import { handleAllAnalytics } from "../../Redux/Analytics/analytics.action";
 
 export default function Feeds() {
   const dispatch = useDispatch();
@@ -11,6 +12,7 @@ export default function Feeds() {
 
   useEffect(() => {
     dispatch(handlePostsData(dispatch, "all"));
+    dispatch(handleAllAnalytics(dispatch));
   }, []);
 
   return (

@@ -1,10 +1,17 @@
 // importing all login action types
-import { AUTH_LOADING, AUTH, AUTH_ERROR, LOG_OUT } from "./auth.action";
+import {
+  AUTH_LOADING,
+  AUTH,
+  AUTH_ERROR,
+  ALL_USER_DATA,
+  LOG_OUT,
+} from "./auth.action";
 
 // defining initial state
 const initialStore = {
   isLoading: false,
   user: null,
+  all: null,
   isAuth: false,
   isError: false,
 };
@@ -36,11 +43,16 @@ export const AuthReducer = (state = initialStore, { type, payload }) => {
         isAuth: state.isAuth,
         isError: true,
       };
-    case LOG_OUT:
+    case ALL_USER_DATA:
       return {
         ...state,
+        all: payload,
+      };
+    case LOG_OUT:
+      return {
         isLoading: false,
-        user: "",
+        user: null,
+        all: null,
         isAuth: false,
         isError: false,
       };

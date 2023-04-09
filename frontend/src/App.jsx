@@ -15,8 +15,8 @@ import Authentication from "./Components/Auth/Auth";
 export default function App() {
   return (
     <div className="App">
-      <Navbar />
       <Router>
+        <Navbar />
         <Routes>
           <Route exact path="/" element={<Feeds />} />
           <Route exact path="/user-analytics" element={<UserAnalytics />} />

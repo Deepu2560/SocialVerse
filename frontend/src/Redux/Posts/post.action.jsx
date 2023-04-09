@@ -109,3 +109,43 @@ export const handleUserDelete = (dispatch, id, data) => {
       });
   };
 };
+
+export const handlePostLike = (dispatch, id) => {
+  return function () {
+    axios
+      .post(`http://localhost:8080/posts/${id}/like`)
+      .then(({ data }) => {
+        const { error, likes, message } = data;
+        if (error) {
+          alert(message);
+          return;
+        }
+        dispatch(postLikesRefresh({ id, likes }));
+        return;
+      })
+      .catch((error) => {
+        alert("Something went wrong. Plese try again!");
+        return;
+      });
+  };
+};
+
+export const handlePostUnLike = (dispatch, id) => {
+  return function () {
+    axios
+      .post(`http://localhost:8080/posts/${id}/unlike`)
+      .then(({ data }) => {
+        const { error, likes, message } = data;
+        if (error) {
+          alert(message);
+          return;
+        }
+        dispatch(postLikesRefresh({ id, likes }));
+        return;
+      })
+      .catch((error) => {
+        alert("Something went wrong. Plese try again!");
+        return;
+      });
+  };
+};

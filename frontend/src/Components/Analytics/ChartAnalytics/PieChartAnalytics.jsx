@@ -1,9 +1,11 @@
 import React from "react";
 import { Pie } from "react-chartjs-2";
-import { Chart, ArcElement } from "chart.js";
-Chart.register(ArcElement);
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import { useSelector } from "react-redux";
+ChartJS.register(ArcElement, Tooltip, Legend);
 
 export default function PieChartAnalytics() {
+  const { userTotal, postTotal } = useSelector((state) => state.analytics);
   // Data for the pie chart
   const data = {
     labels: ["users", "posts"],
@@ -16,7 +18,7 @@ export default function PieChartAnalytics() {
   };
 
   return (
-    <div>
+    <div className="bg-light p-3 rounded-4 w-50" style={{ height: "300px" }}>
       <Pie data={data} />
     </div>
   );

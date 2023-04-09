@@ -6,16 +6,15 @@ export default function PostTopLiked({ data }) {
           <tr>
             <th scope="col">id</th>
             <th scope="col">content</th>
+            <th scope="col">likes</th>
           </tr>
         </thead>
         <tbody className="table-dark">
-          {data.map((elem) => (
-            <tr>
-              <th>23asasidnr42</th>
-              <td>
-                asdfasdfasdf asdfasdf aasdf asdfasdf asdfasdf asdfasdf asdfasdf
-                asdf asfd asdf{" "}
-              </td>
+          {data.map((elem, idx) => (
+            <tr key={idx}>
+              <th>{elem._id}</th>
+              <td>{elem.content}</td>
+              <td>{elem.likes}</td>
             </tr>
           ))}
         </tbody>
