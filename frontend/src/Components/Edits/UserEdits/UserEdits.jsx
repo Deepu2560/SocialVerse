@@ -61,7 +61,6 @@ export default function UserEdits() {
       })
       .catch((err) => {
         alert("Something went wrong. Please try again!");
-        console.log(err);
         return;
       });
   }, []);

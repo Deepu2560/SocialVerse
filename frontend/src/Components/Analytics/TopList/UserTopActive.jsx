@@ -1,5 +1,4 @@
 export default function UserTopActive({ data }) {
-  console.log("data:", data);
   return (
     <div className="table-responsive">
       <table className="table">

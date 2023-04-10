@@ -56,7 +56,6 @@ export default function PostEdits() {
       })
       .catch((err) => {
         alert("Something went wrong. Please try again!");
-        console.log(err);
         return;
       });
   }, []);

@@ -4,8 +4,6 @@ import { useNavigate } from "react-router";
 export default function UserLists() {
   const { all } = useSelector((state) => state.auth);
   const navigate = useNavigate();
-
-  console.log(all);
   return (
     <div className="container">
       <p className="h2">List of all users:</p>

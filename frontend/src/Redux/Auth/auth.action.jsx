@@ -26,17 +26,18 @@ export const handlelogin = (dispatch, route, data) => {
       .then(({ data }) => {
         const { error, user, message } = data;
         if (error) {
-          console.log(message);
+          alert(message);
           dispatch(authError());
           return;
         }
+        alert("Logged in successfully");
         dispatch(authSuccess(user));
         dispatch(handleUserData(dispatch, "all"));
         return;
       })
       .catch((err) => {
+        alert("Something went wrong. Please try again.");
         dispatch(authError());
-        console.log(err);
         return;
       });
   };
@@ -60,7 +61,6 @@ export const handleUserData = (dispatch, id) => {
       })
       .catch((err) => {
         alert("Something went wrong. Please try again!");
-        console.log(err);
         return;
       });
   };
@@ -79,13 +79,14 @@ export const handleUserUpdate = (dispatch, id, current, data) => {
           alert(message);
           return;
         }
+        alert("Upated user data successfully");
         if (current) {
           dispatch(UpdateCurrentUser(dispatch, id));
         }
         return;
       })
       .catch((err) => {
-        console.log(err);
+        alert("Something went wrong. Please try again");
         return;
       });
   };
@@ -106,7 +107,6 @@ export const UpdateCurrentUser = (dispatch, id) => {
       })
       .catch((err) => {
         alert("Something went wrong. Please try again!");
-        console.log(err);
         return;
       });
   };
@@ -125,7 +125,7 @@ export const handleUserDelete = (dispatch, id, current, data) => {
           alert(message);
           return;
         }
-        alert(message);
+        alert("User deleted successfully.");
         if (current) {
           dispatch(handleLogOut(dispatch));
         } else {

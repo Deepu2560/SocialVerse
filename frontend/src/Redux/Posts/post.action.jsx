@@ -29,6 +29,7 @@ export const handlePost = (dispatch, data) => {
           alert(message);
           return;
         }
+        alert("Created post successfully.");
         dispatch(handlePostsData(dispatch, "all"));
         return;
       })
@@ -76,6 +77,7 @@ export const handlePostsUpdate = (dispatch, id, data) => {
           alert(message);
           return;
         }
+        alert("Updated post data successfully.");
         dispatch(handlePostsData(dispatch, "all"));
         return;
       })
@@ -99,6 +101,7 @@ export const handlePostsDelete = (dispatch, id) => {
           alert(message);
           return;
         }
+        alert("Deleted post successfully");
         dispatch(handlePostsData(dispatch, "all"));
         return;
       })

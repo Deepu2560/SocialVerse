@@ -22,8 +22,6 @@ ChartJS.register(
 
 export default function BarChartAnalytics() {
   const { userTop, postTop } = useSelector((state) => state.analytics);
-  const userData = userTop.map((elem) => elem.postCount);
-  console.log("Test:", userData);
   const data = {
     labels: [1, 2, 3, 4, 5],
     datasets: [
