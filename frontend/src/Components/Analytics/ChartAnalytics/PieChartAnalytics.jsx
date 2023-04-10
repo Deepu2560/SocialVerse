@@ -8,10 +8,10 @@ export default function PieChartAnalytics() {
   const { userTotal, postTotal } = useSelector((state) => state.analytics);
   // Data for the pie chart
   const data = {
-    labels: ["users", "posts"],
+    labels: ["Total users", "Total posts"],
     datasets: [
       {
-        data: [12, 19],
+        data: [userTotal, postTotal],
         backgroundColor: ["rgba(255, 99, 132, 0.6)", "rgba(54, 162, 235, 0.6)"],
       },
     ],

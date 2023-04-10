@@ -28,12 +28,12 @@ export default function BarChartAnalytics() {
     labels: [1, 2, 3, 4, 5],
     datasets: [
       {
-        label: "Post count of user",
+        label: "Most active users",
         data: userTop.map((elem) => elem.postCount),
         backgroundColor: "rgba(255, 99, 132, 0.6)", // Color of the bars
       },
       {
-        label: "Likes of post",
+        label: "Most liked users",
         data: postTop.map((elem) => elem.likes),
         backgroundColor: "rgba(54, 162, 235, 0.6)", // Color of the bars
       },

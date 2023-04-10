@@ -12,8 +12,11 @@ export default function Feeds() {
 
   useEffect(() => {
     dispatch(handlePostsData(dispatch, "all"));
-    dispatch(handleAllAnalytics(dispatch));
   }, []);
+
+  useEffect(() => {
+    dispatch(handleAllAnalytics(dispatch));
+  }, [posts]);
 
   return (
     <div className="container-xxl text-center">
