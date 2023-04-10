@@ -6,7 +6,7 @@ export default function UserDetails() {
   return isAuth ? (
     <div className="sticky-top col-sm-3 pt-3 pb-3 shadow-lg border border-secondary-subtle user-details rounded-3">
       <img
-        src="/Images/user.jpg"
+        src="/Images/user.webp"
         className="img-thumbnail rounded-circle mx-auto d-block user-image"
         width="150"
         alt="User avataar"
