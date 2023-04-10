@@ -1,6 +1,6 @@
 # SocialVerse
 
-SocialVerse is a social media web app.
+SocialVerse is a social media web app. This is a solo made project. In this user can login, get data of users, edit data of user and delete user. User can create a post, edit that post, and delete post. User get analytics of top ranked posts and users.
 
 ## File structure
 
