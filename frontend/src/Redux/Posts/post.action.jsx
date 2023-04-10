@@ -20,7 +20,7 @@ export const postLikesRefresh = (payload) => ({
 export const handlePost = (dispatch, data) => {
   return function () {
     axios
-      .post(`http://localhost:8080/posts`, data, {
+      .post(`https://socialverse.onrender.com/posts`, data, {
         Headers: { "Content-Type": "application/json", Accept: "*/*" },
       })
       .then(({ data }) => {
@@ -43,7 +43,7 @@ export const handlePost = (dispatch, data) => {
 export const handlePostsData = (dispatch, id) => {
   return function () {
     axios
-      .get(`http://localhost:8080/posts/${id}`, {
+      .get(`https://socialverse.onrender.com/posts/${id}`, {
         Headers: { "Content-Type": "application/json", Accept: "*/*" },
       })
       .then(({ data }) => {
@@ -67,7 +67,7 @@ export const handlePostsData = (dispatch, id) => {
 export const handlePostsUpdate = (dispatch, id, data) => {
   return function () {
     axios
-      .put(`http://localhost:8080/posts/${id}`, data, {
+      .put(`https://socialverse.onrender.com/posts/${id}`, data, {
         Headers: { "Content-Type": "application/json", Accept: "*/*" },
       })
       .then(({ data }) => {
@@ -90,7 +90,7 @@ export const handlePostsUpdate = (dispatch, id, data) => {
 export const handlePostsDelete = (dispatch, id) => {
   return function () {
     axios
-      .delete(`http://localhost:8080/posts/${id}`, {
+      .delete(`https://socialverse.onrender.com/posts/${id}`, {
         Headers: { "Content-Type": "application/json", Accept: "*/*" },
       })
       .then(({ data }) => {
@@ -113,7 +113,7 @@ export const handlePostsDelete = (dispatch, id) => {
 export const handlePostLike = (dispatch, id) => {
   return function () {
     axios
-      .post(`http://localhost:8080/posts/${id}/like`)
+      .post(`https://socialverse.onrender.com/posts/${id}/like`)
       .then(({ data }) => {
         const { error, likes, message } = data;
         if (error) {
@@ -134,7 +134,7 @@ export const handlePostLike = (dispatch, id) => {
 export const handlePostUnLike = (dispatch, id) => {
   return function () {
     axios
-      .post(`http://localhost:8080/posts/${id}/unlike`)
+      .post(`https://socialverse.onrender.com/posts/${id}/unlike`)
       .then(({ data }) => {
         const { error, likes, message } = data;
         if (error) {

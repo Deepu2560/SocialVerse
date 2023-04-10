@@ -44,7 +44,7 @@ export default function PostEdits() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/posts/${id}`)
+      .get(`https://socialverse.onrender.com/posts/${id}`)
       .then(({ data }) => {
         const { error, post, message } = data;
         if (error) {

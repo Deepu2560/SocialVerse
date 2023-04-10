@@ -20,7 +20,7 @@ export const handlelogin = (dispatch, route, data) => {
   return function () {
     dispatch(authLoading());
     axios
-      .post(`http://localhost:8080/users${route}`, data, {
+      .post(`https://socialverse.onrender.com/users${route}`, data, {
         Headers: { "Content-Type": "application/json", Accept: "*/*" },
       })
       .then(({ data }) => {
@@ -46,7 +46,7 @@ export const handlelogin = (dispatch, route, data) => {
 export const handleUserData = (dispatch, id) => {
   return function () {
     axios
-      .get(`http://localhost:8080/users/${id}`, {
+      .get(`https://socialverse.onrender.com/users/${id}`, {
         Headers: { "Content-Type": "application/json", Accept: "*/*" },
       })
       .then(({ data }) => {
@@ -70,7 +70,7 @@ export const handleUserData = (dispatch, id) => {
 export const handleUserUpdate = (dispatch, id, current, data) => {
   return function () {
     axios
-      .put(`http://localhost:8080/users/${id}`, data, {
+      .put(`https://socialverse.onrender.com/users/${id}`, data, {
         Headers: { "Content-Type": "application/json", Accept: "*/*" },
       })
       .then(({ data }) => {
@@ -94,7 +94,7 @@ export const handleUserUpdate = (dispatch, id, current, data) => {
 export const UpdateCurrentUser = (dispatch, id) => {
   return function () {
     axios
-      .get(`http://localhost:8080/users/${id}`)
+      .get(`https://socialverse.onrender.com/users/${id}`)
       .then(({ data }) => {
         const { error, user, message } = data;
         if (error) {
@@ -116,7 +116,7 @@ export const UpdateCurrentUser = (dispatch, id) => {
 export const handleUserDelete = (dispatch, id, current, data) => {
   return function () {
     axios
-      .delete(`http://localhost:8080/users/${id}`, data, {
+      .delete(`https://socialverse.onrender.com/users/${id}`, data, {
         Headers: { "Content-Type": "application/json", Accept: "*/*" },
       })
       .then(({ data }) => {

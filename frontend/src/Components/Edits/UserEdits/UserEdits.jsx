@@ -49,7 +49,7 @@ export default function UserEdits() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/users/${id}`)
+      .get(`https://socialverse.onrender.com/users/${id}`)
       .then(({ data }) => {
         const { error, user, message } = data;
         if (error) {

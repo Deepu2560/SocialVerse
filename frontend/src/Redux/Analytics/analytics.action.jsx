@@ -39,7 +39,7 @@ export const handleAllAnalytics = (dispatch) => {
 export const handleUserTotal = (dispatch) => {
   return function () {
     axios
-      .get(`http://localhost:8080/analytics/users`, {
+      .get(`https://socialverse.onrender.com/analytics/users`, {
         Headers: { "Content-Type": "application/json", Accept: "*/*" },
       })
       .then((res) => {
@@ -62,7 +62,7 @@ export const handleUserTotal = (dispatch) => {
 export const handleUserTop = (dispatch) => {
   return function () {
     axios
-      .get(`http://localhost:8080/analytics/users/top-active`, {
+      .get(`https://socialverse.onrender.com/analytics/users/top-active`, {
         Headers: { "Content-Type": "application/json", Accept: "*/*" },
       })
       .then((res) => {
@@ -85,7 +85,7 @@ export const handleUserTop = (dispatch) => {
 export const handlePostTotal = (dispatch) => {
   return function () {
     axios
-      .get(`http://localhost:8080/analytics/posts`, {
+      .get(`https://socialverse.onrender.com/analytics/posts`, {
         Headers: { "Content-Type": "application/json", Accept: "*/*" },
       })
       .then((res) => {
@@ -108,7 +108,7 @@ export const handlePostTotal = (dispatch) => {
 export const handlePostTop = (dispatch) => {
   return function () {
     axios
-      .get(`http://localhost:8080/analytics/posts/top-liked`, {
+      .get(`https://socialverse.onrender.com/analytics/posts/top-liked`, {
         Headers: { "Content-Type": "application/json", Accept: "*/*" },
       })
       .then((res) => {
